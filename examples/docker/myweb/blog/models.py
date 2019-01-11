@@ -1,10 +1,6 @@
 #coding:utf8
-from flask_mongoengine import MongoEngine
-from flask import current_app
-from utils import now_ts
-
-#db = MongoEngine()
-from flask_wechat_utils.models import db
+from flask_wechat_utils import db
+from flask_wechat_utils.utils import now_ts
 
 #model
 class Blog(db.Document):

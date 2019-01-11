@@ -6,14 +6,16 @@ logging.basicConfig(level=logging.DEBUG)
 _logger = logging.getLogger(__name__)
 
 #frame
-from flask_restplus import Resource, fields, Api
+from flask_restplus import Resource, fields
 from flask import Blueprint
 
-#utils
-from flask_wechat_utils.auth import auth
-from flask_wechat_utils.auth import get_web_name
-from flask_wechat_utils import config as wechat_config
+# wechat
+from flask_wechat_utils import api
+from flask_wechat_utils.user.utils import auth
 from flask_wechat_utils.utils import now_ts
+
+# applicaton
+import config as config_application
 
 #model
 from models import Blog
@@ -21,31 +23,20 @@ from models import Blog
 #error
 from exceptions import ERROR_BLOG_EMPTY
 from exceptions import ERROR_WRONG_BLOG_ID
-from exceptions import BlogException
+from exceptions import ApplicationException
 
 #-------------------------------------------
 # get app config
 #-------------------------------------------
-application_name = 'blog'
-web_name = get_web_name()
+application_name = config_application.APPLICATION_NAME
+application_description = config_application.APPLICATION_DESCRIPTION
 
 #-------------------------------------------
 # blueprint/api/ns
 #-------------------------------------------
-bp = Blueprint(
-	application_name, 
-	__name__, 
-	url_prefix='/{}'.format(web_name)
-)
-api = Api(
-	bp, 
-	version=wechat_config.APPLICATION_VERSION, 
-	title='{} API'.format(web_name),
-	description=wechat_config.APPLICATION_DESCRIPTION,
-)
 ns = api.namespace(
 	application_name, 
-	description=wechat_config.APPLICATION_DESCRIPTION
+	description=application_description
 )
 
 #-------------------------------------------
@@ -117,7 +108,7 @@ class BlogDetail(Resource):
 		try:
 			blog = Blog.objects.get_or_404(pk=args.get('blogid'))
 		except:
-			raise AuthException(
+			raise ApplicationException(
 				errcode=ERROR_WRONG_BLOG_ID,
 			)
 
@@ -167,7 +158,7 @@ class BlogList(Resource):
 		try:
 			blogs = Blog.objects.paginate(page=args['page'],per_page=args['num'])
 		except:
-			raise AuthException(
+			raise ApplicationException(
 				errcode=ERROR_BLOG_EMPTY,
 			)
 

@@ -67,7 +67,7 @@ class BaseAppException(HTTPException):
 			self.data,
 		)
 
-class BlogException(BaseAppException):
+class ApplicationException(BaseAppException):
 
 	category = 'myweb.blog'
 

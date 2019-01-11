@@ -4,43 +4,35 @@ logging.basicConfig(level=logging.DEBUG)
 _logger = logging.getLogger(__name__)
 
 #frame
-from flask_restplus import Resource, fields, Api
-from flask import Blueprint
+from flask_restplus import Resource, fields
 
-#flask_wechat_utils
-from flask_wechat_utils.auth import config
-from flask_wechat_utils.utils import now_ts
-from flask_wechat_utils.auth import login
-from flask_wechat_utils.auth import register
-from flask_wechat_utils.auth import auth
-from flask_wechat_utils.auth import get_web_name
+# wechat
+from flask_wechat_utils import api
+from flask_wechat_utils.user.utils import auth
+from flask_wechat_utils.user.utils import login
+from flask_wechat_utils.user.utils import register
+#from flask_wechat_utils.user import config as user_config
+
+
+# application
+import config as config_application
 
 #model
-from flask_wechat_utils.models import User
+#from flask_wechat_utils.user.models import User
 
 
 #-------------------------------------------
 # get app config
 #-------------------------------------------
-web_name = get_web_name()
+application_name = config_application.APPLICATION_NAME
+application_description = config_application.APPLICATION_DESCRIPTION
 
 #-------------------------------------------
 # blueprint/api/ns
 #-------------------------------------------
-bp = Blueprint(
-	config.APPLICATION_NAME, 
-	__name__, 
-	url_prefix='/{}'.format(web_name)
-)
-api = Api(
-	bp, 
-	version=config.APPLICATION_VERSION, 
-	title='{} API'.format(web_name),
-	description=config.APPLICATION_DESCRIPTION,
-)
 ns = api.namespace(
-	config.APPLICATION_NAME, 
-	description=config.APPLICATION_DESCRIPTION
+	application_name, 
+	description=application_description
 )
 
 #-------------------------------------------
@@ -94,7 +86,7 @@ marshal_user_login = api.model(
 #-------------------------------------------
 # route
 #-------------------------------------------
-@ns.route('/user')
+@ns.route('/my_user_route')
 class UserRoute(Resource):
 
 	@api.doc(parser=parser_user_login)
@@ -116,7 +108,7 @@ class UserRoute(Resource):
 		}
 
 
-@ns.route('/test')
+@ns.route('/my_test_route')
 class Test(Resource):
 
 	@api.marshal_with(marshal_user_register)

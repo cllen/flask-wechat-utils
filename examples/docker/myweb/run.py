@@ -1,12 +1,11 @@
 #coding:utf8
 from flask import Flask
 
-from flask_wechat_utils import bp as wechat_user_auth_bp
-from flask_wechat_utils import db as wechat_user_auth_db
+from flask_wechat_utils import bp as wechat_bp
+from flask_wechat_utils import db as wechat_db
 from flask_wechat_utils import config as wechat_config
 
-from blog.routes import bp as blog_bp
-from user.routes import bp as user_bp
+
 
 #-------------------------------------------
 # app
@@ -36,12 +35,22 @@ wechat_config.UPDATE_IV_FIELD_NAME = 'iv'
 wechat_config.UPDATE_ENCRYPTEDDATA_FIELD_NAME = 'encryptedData'
 
 #-------------------------------------------
-# blueprint/db
+# 固定写法，不需要修改，初始化数据库+注册路由
 #-------------------------------------------
-wechat_user_auth_db.init_app(app)
+wechat_db.init_app(app)
+app.register_blueprint(wechat_bp)
 
-app.register_blueprint(user_bp)
-app.register_blueprint(blog_bp)
+#-------------------------------------------
+# 用户写好自己的application的route,model等,然后这里导入路由即可
+#-------------------------------------------
+from flask_wechat_utils.user import routes				#user路由(该库默认)
+from flask_wechat_utils.message_template import routes	#template_message路由(该库默认)
+
+from user import routes									#user路由(开发者重写)
+from blog import routes									#blog路由(开发者写)
+from message_template import routes						#message_template路由(开发者写)
+
+
 
 
 if __name__ == '__main__':

@@ -3,7 +3,8 @@ from flask import Flask
 
 from flask_wechat_utils import bp as wechat_bp
 from flask_wechat_utils import db as wechat_db
-from flask_wechat_utils import config as wechat_config
+from flask_wechat_utils import config as user_config
+from flask_wechat_utils.message_template import config as message_template_config
 
 #-------------------------------------------
 # app
@@ -19,9 +20,10 @@ app.config['MONGODB_SETTINGS'] = {
 	'port': 27017,
 }
 
-wechat_config.WXAPP_ID = 'xxx'
-wechat_config.WXAPP_SECRET = 'xxx'
-wechat_config.WEB_NAME = 'myweb'
+user_config.WXAPP_ID = 'xxx'
+user_config.WXAPP_SECRET = 'xxx'
+user_config.WEB_NAME = 'myweb'
+message_template_config.TEMPLATE_ID = None
 
 #-------------------------------------------
 # 固定写法，不需要修改，初始化数据库+注册路由

@@ -1,0 +1,8 @@
+*.pyc
+/build
+/dist
+/flask_wechat_utils.egg-info
+/test.py
+/run.py
+/.pypirc
+/note.txt

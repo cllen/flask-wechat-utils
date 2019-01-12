@@ -4,8 +4,7 @@ from flask import Flask
 from flask_wechat_utils import bp as wechat_bp
 from flask_wechat_utils import db as wechat_db
 from flask_wechat_utils import config as wechat_config
-
-
+from flask_wechat_utils.message_template import config as message_template_config
 
 #-------------------------------------------
 # app
@@ -33,6 +32,7 @@ wechat_config.TOKEN_HEADER_FIELD = 'token'
 wechat_config.LOGIN_CODE_FIELD_NAME = 'code'
 wechat_config.UPDATE_IV_FIELD_NAME = 'iv'
 wechat_config.UPDATE_ENCRYPTEDDATA_FIELD_NAME = 'encryptedData'
+message_template_config.TEMPLATE_ID = None
 
 #-------------------------------------------
 # 固定写法，不需要修改，初始化数据库+注册路由

@@ -4,7 +4,7 @@ flask-wechat-utils v0.1
 * 最后修改时间：2019年01月11日18:54:45
 * 基于:mongo,flask
 * 微服务 + Restful 的代码风格
-* 封装了微信用户登录，注册，验证等3个功能:
+* 封装了微信用户登录，注册，验证，消息模板等4个功能:
 - [x] 微信用户登录(openid)
 - [x] 微信用户注册(nickname,avatarUrl,...)
 - [x] 微信用户验证(token)

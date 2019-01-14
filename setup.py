@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
 	name = "flask-wechat-utils",
-	version="0.1.2",
+	version="0.1.3",
 	auth="Huang Xu Hui",
 	author_email="13250270761@163.com",
 	description="flask-wechat-tuils for wechat-app-user's login/register/auth, and message_template",

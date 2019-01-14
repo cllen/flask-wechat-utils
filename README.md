@@ -139,3 +139,37 @@ done
 * 作者邮箱:13250270761@163.com
 * 项目地址:https://github.com/suckmybigdick/flask-wechat-utils
 * 有任何疑问或任何bug请发送到我邮箱，我会在第一时间回复并修复，同时感谢您提交的任何问题。
+
+ps:目录结构
+-------------------
+* 该项目的目录结构:
+flask_wechat_utils
+├── config.py
+├── __init__.py
+├── user
+│   ├── config.py
+│   ├── exceptions.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── routes.py
+│   └── utils.py
+└── message_template
+     ├── config.py
+     ├── exceptions.py
+     ├── __init__.py
+     ├── models.py
+     ├── routes.py
+     └── utils.py
+* 用户可以参考该目录结构：
+web
+├── config.py
+├── __init__.py
+├── application1
+├── application2
+└── application3
+     ├── config.py
+     ├── exceptions.py
+     ├── __init__.py
+     ├── models.py
+     ├── routes.py
+     └── utils.py

@@ -2,13 +2,13 @@
 flask-wechat-utils v0.1.1
 ===================
 * 最后修改时间：2019年01月11日18:54:45
-* 基于:mongo,flask
-* 微服务 + Restful 的代码风格
+* 基于:python2,flask,mongo,
+* Restful的微服务代码风格
 * 封装了微信用户登录，注册，验证，消息模板等4个功能:
 - [x] 微信用户登录(openid)
 - [x] 微信用户注册(nickname,avatarUrl,...)
 - [x] 微信用户验证(token)
-- [x] 新增：formid写入+读出后自动删除+过期后自动删除
+- [x] 新增：formid存储/读出自动删除/过期自动删除
 - [x] 新增：微信消息模板发送
 
 
@@ -65,10 +65,10 @@ wechat_db.init_app(app)
 app.register_blueprint(wechat_bp)
 
 #-------------------------------------------
-# 用户写好自己的application的route,model等,然后这里导入路由即可,这里使用该库默认路由
+# 通常情况需要用户自己定制路由，这里为了方便展示使用框架的路由
 #-------------------------------------------
-from flask_wechat_utils.user import routes				#使用默认user路由
-from flask_wechat_utils.message_template import routes	#使用默认message_template路由
+from flask_wechat_utils.user import routes				#user
+from flask_wechat_utils.message_template import routes	#message_template
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0',port=5000)
@@ -134,7 +134,7 @@ print response.json()
 
 done
 -------------------
-* 完成，以上是快速开始的3个接口。
+* 完成，以上是快速开始的3个接口示例。
 * auth,login,register,消息模板的具体使用请参考github的examples/big示例。
 * 作者邮箱:13250270761@163.com
 * 项目地址:https://github.com/suckmybigdick/flask-wechat-utils

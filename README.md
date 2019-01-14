@@ -1,5 +1,5 @@
 
-flask-wechat-utils v0.1.2
+flask-wechat-utils v0.1.3
 ===================
 * 最后修改时间：2019年01月11日18:54:45
 * 基于:python2,flask,mongo,
@@ -142,34 +142,34 @@ done
 
 ps:目录结构
 -------------------
-* 该项目的目录结构:
-flask_wechat_utils
-├── config.py
-├── __init__.py
-├── user
-│   ├── config.py
-│   ├── exceptions.py
-│   ├── __init__.py
-│   ├── models.py
-│   ├── routes.py
-│   └── utils.py
-└── message_template
-     ├── config.py
-     ├── exceptions.py
-     ├── __init__.py
-     ├── models.py
-     ├── routes.py
-     └── utils.py
-* 用户可以参考该目录结构：
-web
-├── config.py
-├── __init__.py
-├── application1
-├── application2
-└── application3
-     ├── config.py
-     ├── exceptions.py
-     ├── __init__.py
-     ├── models.py
-     ├── routes.py
-     └── utils.py
+* 该项目的目录结构:  
+flask_wechat_utils  
+├── config.py  
+├── __init__.py  
+├── user  
+│   ├── config.py  
+│   ├── exceptions.py  
+│   ├── __init__.py  
+│   ├── models.py  
+│   ├── routes.py  
+│   └── utils.py  
+└── message_template  
+     ├── config.py  
+     ├── exceptions.py  
+     ├── __init__.py  
+     ├── models.py  
+     ├── routes.py  
+     └── utils.py  
+* 用户可以参考该目录结构：  
+web  
+├── config.py  
+├── __init__.py  
+├── application1  
+├── application2  
+└── application3  
+     ├── config.py  
+     ├── exceptions.py  
+     ├── __init__.py  
+     ├── models.py  
+     ├── routes.py  
+     └── utils.py  

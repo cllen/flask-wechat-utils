@@ -91,7 +91,7 @@ headers = {
 	'Content-Type':'application/json',
 }
 data = {
-	'code',
+	'code':'xxx',
 }
 response = requests.post(url,headers=headers,json=data)
 print response.json() #token

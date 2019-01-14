@@ -1,5 +1,5 @@
 
-flask-wechat-utils v0.1
+flask-wechat-utils v0.1.1
 ===================
 * 最后修改时间：2019年01月11日18:54:45
 * 基于:mongo,flask
@@ -8,7 +8,7 @@ flask-wechat-utils v0.1
 - [x] 微信用户登录(openid)
 - [x] 微信用户注册(nickname,avatarUrl,...)
 - [x] 微信用户验证(token)
-- [x] 新增：formid写入，读出自动删除，过期自动删除
+- [x] 新增：formid写入+读出后自动删除+过期后自动删除
 - [x] 新增：微信消息模板发送
 
 

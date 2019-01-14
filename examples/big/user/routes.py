@@ -108,8 +108,8 @@ class UserRoute(Resource):
 		}
 
 
-@ns.route('/my_test_route')
-class Test(Resource):
+@ns.route('/my_test_auth')
+class TestAuth(Resource):
 
 	@api.marshal_with(marshal_user_register)
 	@auth

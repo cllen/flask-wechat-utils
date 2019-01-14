@@ -6,6 +6,10 @@ from flask_wechat_utils import db as wechat_db
 from flask_wechat_utils import config as user_config
 from flask_wechat_utils.message_template import config as message_template_config
 
+from flask_wechat_utils import api
+from flask_wechat_utils.user.utils import auth
+from flask_restplus import Resource, fields
+
 #-------------------------------------------
 # app
 #-------------------------------------------
@@ -30,6 +34,27 @@ message_template_config.TEMPLATE_ID = None
 #-------------------------------------------
 wechat_db.init_app(app)
 app.register_blueprint(wechat_bp)
+
+
+#-------------------------------------------
+# my routees
+#-------------------------------------------
+ns = api.namespace(
+	'myapplication', 
+	description='descriptions of my_routes'
+)
+
+@ns.route('/my_auth_route')	# http://127.0.0.1:5000/myweb/myapplication/my_auth_route
+class AuthRoute(Resource):
+
+	@auth
+	def get(self):
+
+		return {
+			'code':0,
+			'nickname':self.wechat_user.nickname,
+			'avatar':self.wechat_user.avatar,
+		}
 
 #-------------------------------------------
 # 用户写好自己的application的route,model等,然后这里导入路由即可,这里使用该库默认路由

@@ -134,7 +134,7 @@ print response.json()
 
 done
 -------------------
-* 完成，目前只提供以上3个接口。
+* 完成，以上是快速开始的3个接口，还有消息模板接口请参考github的examples/big示例。
 * 作者邮箱:13250270761@163.com
-* 项目github:https://github.com/suckmybigdick/flask-wechat-utils
+* 项目地址:https://github.com/suckmybigdick/flask-wechat-utils
 * 有任何疑问或任何bug请发送到我邮箱，我会在第一时间回复并修复，同时感谢您提交的任何问题。

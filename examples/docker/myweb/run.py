@@ -41,16 +41,14 @@ wechat_db.init_app(app)
 app.register_blueprint(wechat_bp)
 
 #-------------------------------------------
-# 用户写好自己的application的route,model等,然后这里导入路由即可
+# 用户自定义路由
 #-------------------------------------------
-from flask_wechat_utils.user import routes				#user路由(该库默认)
-from flask_wechat_utils.message_template import routes	#template_message路由(该库默认)
+#from flask_wechat_utils.user import routes				#login,register,auth，是本库的路由
+#from flask_wechat_utils.message_template import routes	#template_message，是本库的路由
 
-from user import routes									#user路由(开发者重写)
-from blog import routes									#blog路由(开发者写)
-from message_template import routes						#message_template路由(开发者写)
-
-
+from user import routes									#login,register,auth，是开发者自定义的路由
+from blog import routes									#blog，是开发者自定义的路由
+from message_template import routes						#message_template，是开发者自定义的路由
 
 
 if __name__ == '__main__':

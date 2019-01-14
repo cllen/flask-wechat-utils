@@ -1,5 +1,5 @@
 
-flask-wechat-utils v0.1.5
+flask-wechat-utils v0.1.6
 ===================
 * 最后修改时间：2019年01月11日18:54:45
 * 基于:python2,flask,mongo,
@@ -162,7 +162,7 @@ flask_wechat_utils
      └── utils.py  
 * 用户可以参考该目录结构：  
 web  
-├── __init__.py 
+├── __init__.py  
 ├── config.py  
 ├── run.py  
 ├── application1  

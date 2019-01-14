@@ -1,5 +1,5 @@
 
-flask-wechat-utils v0.1.1
+flask-wechat-utils v0.1.2
 ===================
 * 最后修改时间：2019年01月11日18:54:45
 * 基于:python2,flask,mongo,

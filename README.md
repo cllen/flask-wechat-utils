@@ -36,10 +36,7 @@ pip install flask-wechat-utils
 ```python
 #coding:utf8
 from flask import Flask
-
-from flask_wechat_utils import bp as wechat_bp
-from flask_wechat_utils import db as wechat_db
-from flask_wechat_utils import config as wechat_config
+import flask_wechat_utils
 
 #-------------------------------------------
 # app
@@ -50,26 +47,35 @@ app = Flask(__name__)
 # config
 #-------------------------------------------
 app.config['MONGODB_SETTINGS'] = {
-	'db': 'xxx',
+	'db': 'blog',
 	'host': 'mongo',
 	'port': 27017,
 }
 
-wechat_config.WXAPP_ID = 'xxx'
-wechat_config.WXAPP_SECRET = 'xxx'
-wechat_config.WEB_NAME = 'myweb'
+app.WXAPP_ID = 'xxx'
+app.WXAPP_SECRET = 'xxx'
+app.TOKEN_SECRET_KEY = 'xxx'
+app.TOKEN_SALT = 'xxx'
+app.TOKEN_TIMEOUT_HOURS = 24 * 365
+app.WEB_NAME = 'zhihu'
+app.TEMPLATE_ID = None
 
 #-------------------------------------------
-# 固定写法，不需要修改，初始化数据库+注册路由
+# config flask-wechat-utils (db/bp/api)
 #-------------------------------------------
-wechat_db.init_app(app)
-app.register_blueprint(wechat_bp)
+flask_wechat_utils.init_app(app)
 
 #-------------------------------------------
-# 通常情况需要用户自己定制路由，这里为了方便展示使用框架的路由
+# register bp
 #-------------------------------------------
-from flask_wechat_utils.user import routes				#user
-from flask_wechat_utils.message_template import routes	#message_template
+app.register_blueprint(flask_wechat_utils.config.bp)
+
+#-------------------------------------------
+# route
+#-------------------------------------------
+#from flask_wechat_utils.user import routes				#login,register,auth，是本库的路由
+#from flask_wechat_utils.message_template import routes	#template_message，是本库的路由
+
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0',port=5000)

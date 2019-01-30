@@ -5,34 +5,28 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 _logger = logging.getLogger(__name__)
 
-#frame
+#flask frame
 from flask_restplus import Resource, fields
 
-#wechat
-from flask_wechat_utils import api 
+#wechat frame
+import flask_wechat_utils
 import config as config_application
+from flask_wechat_utils.config import api
 
-#model
+#application models
 from models import User
 
-#application
+#application utils
 from utils import login
 from utils import register
 from utils import auth
-
-
-#-------------------------------------------
-# get app config
-#-------------------------------------------
-application_name = config_application.APPLICATION_NAME
-application_description = config_application.APPLICATION_DESCRIPTION
 
 #-------------------------------------------
 # namespace
 #-------------------------------------------
 ns = api.namespace(
-	application_name, 
-	description=application_description
+	config_application.APPLICATION_NAME, 
+	description=config_application.APPLICATION_DESCRIPTION
 )
 
 #-------------------------------------------

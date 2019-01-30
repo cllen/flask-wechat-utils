@@ -7,11 +7,10 @@ _logger = logging.getLogger(__name__)
 from flask_restplus import Resource, fields
 
 # wechat
-from flask_wechat_utils import api
+from flask_wechat_utils.config import api
 from flask_wechat_utils.user.utils import auth
 from flask_wechat_utils.user.utils import login
 from flask_wechat_utils.user.utils import register
-#from flask_wechat_utils.user import config as user_config
 
 
 # application
@@ -20,19 +19,12 @@ import config as config_application
 #model
 #from flask_wechat_utils.user.models import User
 
-
-#-------------------------------------------
-# get app config
-#-------------------------------------------
-application_name = config_application.APPLICATION_NAME
-application_description = config_application.APPLICATION_DESCRIPTION
-
 #-------------------------------------------
 # blueprint/api/ns
 #-------------------------------------------
 ns = api.namespace(
-	application_name, 
-	description=application_description
+	config_application.APPLICATION_NAME, 
+	description=config_application.APPLICATION_DESCRIPTION
 )
 
 #-------------------------------------------
@@ -86,7 +78,7 @@ marshal_user_login = api.model(
 #-------------------------------------------
 # route
 #-------------------------------------------
-@ns.route('/my_user_route')
+@ns.route('/')
 class UserRoute(Resource):
 
 	@api.doc(parser=parser_user_login)
@@ -108,7 +100,7 @@ class UserRoute(Resource):
 		}
 
 
-@ns.route('/my_test_auth')
+@ns.route('/test')
 class TestAuth(Resource):
 
 	@api.marshal_with(marshal_user_register)

@@ -14,3 +14,6 @@ TOKEN_HEADER_FIELD = 'token'
 LOGIN_CODE_FIELD_NAME = 'code'
 UPDATE_IV_FIELD_NAME = 'iv'
 UPDATE_ENCRYPTEDDATA_FIELD_NAME = 'encryptedData'
+
+bp = None
+api = None

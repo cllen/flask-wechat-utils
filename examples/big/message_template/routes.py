@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 from flask_restplus import Resource
 
 #wechat
-from flask_wechat_utils import api
+from flask_wechat_utils.config import api
 from flask_wechat_utils.user.utils import auth
 from flask_wechat_utils.message_template.utils import save_formid
 from flask_wechat_utils.message_template.utils import send_message_template
@@ -25,18 +25,11 @@ from flask_wechat_utils.message_template.exceptions import ApplicationException
 from flask_wechat_utils.message_template.exceptions import ERROR_MESSAGE_TEMPLATE_TEMPLATE_ID_IS_NONE
 
 #-------------------------------------------
-# get app config
-#-------------------------------------------
-application_name = config_application.APPLICATION_NAME
-application_description = config_application.APPLICATION_DESCRIPTION
-
-
-#-------------------------------------------
 # blueprint/api/ns
 #-------------------------------------------
 ns = api.namespace(
-	application_name, 
-	description=application_description
+	config_application.APPLICATION_NAME, 
+	description=config_application.APPLICATION_DESCRIPTION
 )
 
 

@@ -1,6 +1,6 @@
 #coding:utf8
-from flask_wechat_utils import db
 from flask_wechat_utils.utils import now_ts
+from flask_wechat_utils.config import db 
 
 class User(db.Document):
 

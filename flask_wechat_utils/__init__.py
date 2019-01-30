@@ -5,25 +5,49 @@ from flask import Blueprint
 from flask_restplus import Api
 from flask_mongoengine import MongoEngine
 
-#wechat
-from config import WEB_NAME
+import config
 
 
-bp = Blueprint(
-	WEB_NAME, 
-	__name__, 
-	url_prefix='/{}'.format(WEB_NAME)
-)
+def init_app(app):
 
-api = Api(
-	bp, 
-	version='0.1', 
-	title='{} API'.format(WEB_NAME),
-	description='description',
-)
+	config.WEB_NAME = 'myweb' if not app.config.get('WEB_NAME') else app.config.get('WEB_NAME')
 
-db = MongoEngine()
+	config.WXAPP_ID = None if not app.config.get('WXAPP_ID') else app.config.get('WXAPP_ID')
+	config.WXAPP_SECRET = None if not app.config.get('WXAPP_ID') else app.config.get('WXAPP_ID')
 
-#routes
-# from user import routes
-# from message_template import routes
+	config.TOKEN_SECRET_KEY = 'xxx' if not app.config.get('TOKEN_SECRET_KEY') else app.config.get('TOKEN_SECRET_KEY')
+	config.TOKEN_SALT = 'xxx' if not app.config.get('TOKEN_SALT') else conTOKEN_SECRET_KEYt('TOKEN_SALT')
+	config.TOKEN_TIMEOUT_HOURS = 24 * 365 if not app.config.get('TOKEN_TIMEOUT_HOURS') else app.config.get('TOKEN_TIMEOUT_HOURS')
+	config.TOKEN_FIELDS_REQUIRED = ['openid'] if not app.config.get('TOKEN_FIELDS_REQUIRED') else app.config.get('TOKEN_FIELDS_REQUIRED')
+
+	config.TOKEN_HEADER_FIELD = 'token' if not app.config.get('TOKEN_HEADER_FIELD') else app.config.get('TOKEN_HEADER_FIELD')
+	config.LOGIN_CODE_FIELD_NAME = 'code' if not app.config.get('LOGIN_CODE_FIELD_NAME') else app.config.get('LOGIN_CODE_FIELD_NAME')
+	config.UPDATE_IV_FIELD_NAME = 'iv' if not app.config.get('UPDATE_IV_FIELD_NAME') else app.config.get('UPDATE_IV_FIELD_NAME')
+	config.UPDATE_ENCRYPTEDDATA_FIELD_NAME = 'encryptedData' if not app.config.get('UPDATE_ENCRYPTEDDATA_FIELD_NAME') else app.config.get('UPDATE_ENCRYPTEDDATA_FIELD_NAME')
+	config.TEMPLATE_ID = None if not app.config.get('TEMPLATE_ID') else app.config.get('TEMPLATE_ID')
+
+	init_db(app)
+	init_bp(app)
+	init_api(app)
+	
+
+def init_db(app):
+	config.db = MongoEngine()
+	config.db.init_app(app)
+
+def init_bp(app):
+	config.bp = Blueprint(
+		app.WEB_NAME, 
+		__name__, 
+		url_prefix='/{}'.format(app.WEB_NAME)
+	)
+	return config.bp
+
+def init_api(app):
+	config.api = Api(
+		config.bp, 
+		version='0.1', 
+		title='{} API'.format(app.WEB_NAME),
+		description='description',
+	)
+

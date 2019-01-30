@@ -7,7 +7,7 @@ services:
         command: gunicorn -w 4 -b 0.0.0.0:5000 -t 160 run:app
         build: ./myweb
         ports:
-            - "7001:5000"
+            - "30011:5000"
         volumes:
             - ./myweb:/home/hxh/myweb
         links:

@@ -1,8 +1,0 @@
-Flask==0.10.1
-requests==2.9.1
-cryptography==1.2.3
-itsdangerous==0.24
-Werkzeug==0.14.1
-flask_restplus==0.12.1
-flask_mongoengine==0.9.5
-gunicorn

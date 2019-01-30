@@ -10,7 +10,7 @@ from flask_restplus import Resource, fields
 from flask import Blueprint
 
 # wechat
-from flask_wechat_utils import api
+from flask_wechat_utils.config import api
 from flask_wechat_utils.user.utils import auth
 from flask_wechat_utils.utils import now_ts
 
@@ -26,17 +26,11 @@ from exceptions import ERROR_WRONG_BLOG_ID
 from exceptions import ApplicationException
 
 #-------------------------------------------
-# get app config
-#-------------------------------------------
-application_name = config_application.APPLICATION_NAME
-application_description = config_application.APPLICATION_DESCRIPTION
-
-#-------------------------------------------
 # blueprint/api/ns
 #-------------------------------------------
 ns = api.namespace(
-	application_name, 
-	description=application_description
+	config_application.APPLICATION_NAME, 
+	description=config_application.APPLICATION_DESCRIPTION
 )
 
 #-------------------------------------------

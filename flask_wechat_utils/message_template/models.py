@@ -1,6 +1,6 @@
 #coding:utf8
-from flask_wechat_utils import db
 from flask_wechat_utils.utils import now_ts
+from flask_wechat_utils.config import db 
 from config import EXPIRE_AFTER_SECONDS
 
 from datetime import datetime

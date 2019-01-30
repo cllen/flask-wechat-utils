@@ -5,43 +5,43 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 _logger = logging.getLogger(__name__)
 
-#frame
+#flask frame
 from flask_restplus import Resource
 
-#wechat
-from flask_wechat_utils import api
-from flask_wechat_utils import utils as utils_common
+#wechat frame
+import flask_wechat_utils
+from flask_wechat_utils.user.utils import auth
+from flask_wechat_utils.config import api
+
+#application config
 import config as config_application
 
-#model
+#application model
 from models import MessageTemplate
 
 #application
-from flask_wechat_utils.user.utils import auth
 from utils import get_formid_and_delete
-
-
-#-------------------------------------------
-# get app config
-#-------------------------------------------
-application_name = config_application.APPLICATION_NAME
-application_description = config_application.APPLICATION_DESCRIPTION
 
 #-------------------------------------------
 # blueprint/api/ns
 #-------------------------------------------
 ns = api.namespace(
-	application_name, 
-	description=application_description
+	config_application.APPLICATION_NAME, 
+	description=config_application.APPLICATION_DESCRIPTION
 )
+
+# api = flask_wechat_utils.create_api()
+
+# ns = api.namespace(
+# 	config_application.APPLICATION_NAME, 
+# 	description=config_application.APPLICATION_DESCRIPTION
+# )
 
 #-------------------------------------------
 # /parser/marshal
 #-------------------------------------------
 parser_messageTemplate_create = api.parser()
 parser_messageTemplate_create.add_argument('form_id',type=str,required=True)
-
-
 
 #-------------------------------------------
 # route

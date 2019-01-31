@@ -10,8 +10,8 @@ from flask_restplus import Resource, fields
 
 #wechat frame
 import flask_wechat_utils
-import config as config_application
 from flask_wechat_utils.config import api
+import config as config_application
 
 #application models
 from models import User

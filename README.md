@@ -74,8 +74,8 @@ app.register_blueprint(flask_wechat_utils.config.bp)
 #-------------------------------------------
 # route
 #-------------------------------------------
-#from flask_wechat_utils.user import routes				#login,register,auth，是本库的路由
-#from flask_wechat_utils.message_template import routes	#template_message，是本库的路由
+from flask_wechat_utils.user import routes
+from flask_wechat_utils.message_template import routes
 
 
 if __name__ == '__main__':

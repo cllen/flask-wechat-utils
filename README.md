@@ -58,7 +58,7 @@ app.WXAPP_SECRET = 'xxx'
 app.TOKEN_SECRET_KEY = 'xxx'
 app.TOKEN_SALT = 'xxx'
 app.TOKEN_TIMEOUT_HOURS = 24 * 365
-app.WEB_NAME = 'zhihu'
+app.WEB_NAME = 'myweb'
 app.TEMPLATE_ID = None
 
 #-------------------------------------------

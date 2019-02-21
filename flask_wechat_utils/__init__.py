@@ -10,13 +10,15 @@ import config
 
 def init_app(app):
 
+	print app.config.get('WXAPP_ID')
+
 	config.WEB_NAME = 'myweb' if not app.config.get('WEB_NAME') else app.config.get('WEB_NAME')
 
 	config.WXAPP_ID = None if not app.config.get('WXAPP_ID') else app.config.get('WXAPP_ID')
-	config.WXAPP_SECRET = None if not app.config.get('WXAPP_ID') else app.config.get('WXAPP_ID')
+	config.WXAPP_SECRET = None if not app.config.get('WXAPP_SECRET') else app.config.get('WXAPP_SECRET')
 
 	config.TOKEN_SECRET_KEY = 'xxx' if not app.config.get('TOKEN_SECRET_KEY') else app.config.get('TOKEN_SECRET_KEY')
-	config.TOKEN_SALT = 'xxx' if not app.config.get('TOKEN_SALT') else conTOKEN_SECRET_KEYt('TOKEN_SALT')
+	config.TOKEN_SALT = 'xxx' if not app.config.get('TOKEN_SALT') else app.config.get('TOKEN_SALT')
 	config.TOKEN_TIMEOUT_HOURS = 24 * 365 if not app.config.get('TOKEN_TIMEOUT_HOURS') else app.config.get('TOKEN_TIMEOUT_HOURS')
 	config.TOKEN_FIELDS_REQUIRED = ['openid'] if not app.config.get('TOKEN_FIELDS_REQUIRED') else app.config.get('TOKEN_FIELDS_REQUIRED')
 
@@ -37,9 +39,9 @@ def init_db(app):
 
 def init_bp(app):
 	config.bp = Blueprint(
-		app.WEB_NAME, 
+		app.config['WEB_NAME'], 
 		__name__, 
-		url_prefix='/{}'.format(app.WEB_NAME)
+		url_prefix='/{}'.format(app.config['WEB_NAME'])
 	)
 	return config.bp
 
@@ -47,7 +49,7 @@ def init_api(app):
 	config.api = Api(
 		config.bp, 
 		version='0.1', 
-		title='{} API'.format(app.WEB_NAME),
+		title='{} API'.format(app.config['WEB_NAME']),
 		description='description',
 	)
 

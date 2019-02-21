@@ -191,6 +191,7 @@ def login(func):
 		# 		errcode=ERROR_LOGIN_CODE_LOST_EFFECT,
 		# 	)
 		else:
+			_logger.debug(result_login)
 			raise ApplicationException(
 				errcode=ERROR_LOGIN_CODE_NO_WHY,
 			)

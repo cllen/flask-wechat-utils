@@ -1,50 +1,46 @@
 #coding:utf8
 from flask import Flask
+import flask_wechat_utils
 
-from flask_wechat_utils import bp as wechat_bp
-from flask_wechat_utils import db as wechat_db
-from flask_wechat_utils import config as user_config
-from flask_wechat_utils.message_template import config as message_template_config
-
-from flask_wechat_utils import api
-from flask_wechat_utils.user.utils import auth
-from flask_restplus import Resource, fields
-
-#-------------------------------------------
-# app
-#-------------------------------------------
 app = Flask(__name__)
 
 #-------------------------------------------
-# config
+# config app
 #-------------------------------------------
 app.config['MONGODB_SETTINGS'] = {
 	'db': 'xxx',
-	'host': 'mongo',
+	'host': '127.0.0.1',
 	'port': 27017,
 }
 
-user_config.WXAPP_ID = 'xxx'
-user_config.WXAPP_SECRET = 'xxx'
-user_config.WEB_NAME = 'myweb'
-message_template_config.TEMPLATE_ID = None
+app.config['WXAPP_ID'] = 'xxx'
+app.config['WXAPP_SECRET'] = 'xxx'
+app.config['TOKEN_SECRET_KEY'] = 'xxx'
+app.config['TOKEN_SALT'] = 'xxx'
+app.config['TOKEN_TIMEOUT_HOURS'] = 24 * 365
+app.config['WEB_NAME'] = 'xxx'
+app.config['TEMPLATE_ID'] = None
 
 #-------------------------------------------
-# 固定写法，不需要修改，初始化数据库+注册路由
+# config flask-wechat-utils (db/bp/api)
 #-------------------------------------------
-wechat_db.init_app(app)
-app.register_blueprint(wechat_bp)
+flask_wechat_utils.init_app(app)
 
+#-------------------------------------------
+# register bp
+#-------------------------------------------
+app.register_blueprint(flask_wechat_utils.config.bp)
 
 #-------------------------------------------
 # my routees
 #-------------------------------------------
+from flask_wechat_utils.config import api
 ns = api.namespace(
 	'myapplication', 
-	description='descriptions of my_routes'
+	description='descriptions of myapplication'
 )
 
-@ns.route('/my_auth_route')	# http://127.0.0.1:5000/myweb/myapplication/my_auth_route
+@ns.route('/test')	# http://127.0.0.1:5000/myweb/myapplication/test
 class AuthRoute(Resource):
 
 	@auth
@@ -57,7 +53,7 @@ class AuthRoute(Resource):
 		}
 
 #-------------------------------------------
-# 用户写好自己的application的route,model等,然后这里导入路由即可,这里使用该库默认路由
+# flask-wechat-utils routes
 #-------------------------------------------
 from flask_wechat_utils.user import routes				#使用默认user路由
 from flask_wechat_utils.message_template import routes	#使用默认message_template路由

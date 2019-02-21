@@ -2,5 +2,5 @@ Flask==0.10.1
 flask_restplus==0.12.1
 requests==2.21.0
 Werkzeug==0.14.1
-flask_wechat_utils==0.1.7
+flask_wechat_utils
 gunicorn

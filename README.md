@@ -2,14 +2,11 @@
 flask-wechat-utils
 ===================
 * v0.1.11
-* 最后修改时间：2019年01月14日15:28:53
-* 最后修改时间：2019年02月21日09:21:34
-* 基于:python2,flask,mongo,
-* Restful的微服务代码风格
+* mongo/python2.7
 * 封装了微信用户登录，注册，验证，消息模板等4个功能:
-- [x] 微信用户登录(openid)
+- [x] 微信用户登录(code)
 - [x] 微信用户注册(nickname,avatarUrl,...)
-- [x] 微信用户验证(token)
+- [x] 微信用户验证的写入(token)
 - [x] 新增：formid存储/读出自动删除/过期自动删除
 - [x] 新增：微信消息模板发送
 
@@ -58,7 +55,7 @@ app.config['WXAPP_SECRET'] = 'xxx'
 app.config['TOKEN_SECRET_KEY'] = 'xxx'
 app.config['TOKEN_SALT'] = 'xxx'
 app.config['TOKEN_TIMEOUT_HOURS'] = 24 * 365
-app.config['WEB_NAME'] = 'xxx'
+app.config['WEB_NAME'] = 'myweb'
 app.config['TEMPLATE_ID'] = None
 
 #-------------------------------------------
@@ -89,7 +86,7 @@ if __name__ == '__main__':
 python run.py
 ```
 
-5 测试：微信小程序分别带上code、iv、encryptedData、token访问下面api完成用户信息的登录、验证、注册。这里提供的是python模拟微信小程序访问。
+5 使用：微信小程序分别带上code、iv、encryptedData、token访问下面api完成用户信息的登录、验证、注册。这里提供的是python模拟微信小程序访问。
 -------------------
 * login
 ```python

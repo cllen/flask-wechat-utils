@@ -18,7 +18,7 @@ app.config['WXAPP_SECRET'] = 'xxx'
 app.config['TOKEN_SECRET_KEY'] = 'xxx'
 app.config['TOKEN_SALT'] = 'xxx'
 app.config['TOKEN_TIMEOUT_HOURS'] = 24 * 365
-app.config['WEB_NAME'] = 'xxx'
+app.config['WEB_NAME'] = 'myweb'
 app.config['TEMPLATE_ID'] = None
 
 #-------------------------------------------
@@ -35,17 +35,35 @@ app.register_blueprint(flask_wechat_utils.config.bp)
 # my routees
 #-------------------------------------------
 from flask_wechat_utils.config import api
+
 ns = api.namespace(
 	'myapplication', 
 	description='descriptions of myapplication'
 )
 
-@ns.route('/test')	# http://127.0.0.1:5000/myweb/myapplication/test
-class AuthRoute(Resource):
+#-------------------------------------------
+# route
+#-------------------------------------------
+@ns.route('/user')
+class UserLoginRegister(Resource):
+
+	@login
+	def post(self):
+		return {
+			'code':0,
+			'token':self.wechat_user_token,
+		}
+
+	@register
+	def put(self):
+		return {
+			'code':0,
+			'nickname':self.wechat_user.nickname,
+			'avatar':self.wechat_user.avatar,
+		}
 
 	@auth
 	def get(self):
-
 		return {
 			'code':0,
 			'nickname':self.wechat_user.nickname,
@@ -55,8 +73,8 @@ class AuthRoute(Resource):
 #-------------------------------------------
 # flask-wechat-utils routes
 #-------------------------------------------
-from flask_wechat_utils.user import routes				#使用默认user路由
-from flask_wechat_utils.message_template import routes	#使用默认message_template路由
+# from flask_wechat_utils.user import routes				#使用默认user路由
+# from flask_wechat_utils.message_template import routes	#使用默认message_template路由
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0',port=5000)

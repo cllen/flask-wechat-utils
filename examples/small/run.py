@@ -1,6 +1,9 @@
 #coding:utf8
 from flask import Flask
 import flask_wechat_utils
+from flask_wechat_utils.user.utils import auth
+from flask_wechat_utils.user.utils import login
+from flask_wechat_utils.user.utils import register
 
 app = Flask(__name__)
 
@@ -38,7 +41,7 @@ ns = api.namespace(
 )
 
 @ns.route('/user')
-class UserLoginRegister(Resource):
+class User(Resource):
 
 	@login
 	def post(self):

@@ -5,7 +5,7 @@ import flask_wechat_utils
 app = Flask(__name__)
 
 #-------------------------------------------
-# config app
+# 1 config app
 #-------------------------------------------
 app.config['MONGODB_SETTINGS'] = {
 	'db': 'xxx',
@@ -22,17 +22,13 @@ app.config['WEB_NAME'] = 'myweb'
 app.config['TEMPLATE_ID'] = None
 
 #-------------------------------------------
-# config flask-wechat-utils (db/bp/api)
+# 2 init (db/bp/api)
 #-------------------------------------------
 flask_wechat_utils.init_app(app)
 
-#-------------------------------------------
-# register bp
-#-------------------------------------------
-app.register_blueprint(flask_wechat_utils.config.bp)
 
 #-------------------------------------------
-# my routees
+# 3 my routees
 #-------------------------------------------
 from flask_wechat_utils.config import api
 
@@ -41,9 +37,6 @@ ns = api.namespace(
 	description='descriptions of myapplication'
 )
 
-#-------------------------------------------
-# route
-#-------------------------------------------
 @ns.route('/user')
 class UserLoginRegister(Resource):
 
@@ -71,7 +64,7 @@ class UserLoginRegister(Resource):
 		}
 
 #-------------------------------------------
-# flask-wechat-utils routes
+# 3 flask-wechat-utils routes
 #-------------------------------------------
 # from flask_wechat_utils.user import routes				#使用默认user路由
 # from flask_wechat_utils.message_template import routes	#使用默认message_template路由

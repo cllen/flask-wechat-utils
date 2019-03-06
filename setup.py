@@ -1,13 +1,15 @@
 import setuptools
 
 
-with open("README.md", "r") as fh:
-	long_description = fh.read()
+# with open("README.md", "r") as fh:
+# 	long_description = fh.read()
+
+long_description = 'https://github.com/suckmybigdick/flask-wechat-utils'
 
 
 setuptools.setup(
 	name = "flask-wechat-utils",
-	version="0.1.11",
+	version="0.1.13",
 	auth="Huang Xu Hui",
 	author_email="13250270761@163.com",
 	description="flask-wechat-tuils for wechat-app-user's login/register/auth, and message_template",

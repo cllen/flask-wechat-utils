@@ -31,6 +31,8 @@ def init_app(app):
 	init_db(app)
 	init_bp(app)
 	init_api(app)
+
+	app.register_blueprint(config.bp)
 	
 
 def init_db(app):

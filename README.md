@@ -36,48 +36,35 @@ pip install flask-wechat-utils
 from flask import Flask
 import flask_wechat_utils
 
-#-------------------------------------------
-# app
-#-------------------------------------------
 app = Flask(__name__)
 
 #-------------------------------------------
-# config
+# 1 config
 #-------------------------------------------
 app.config['MONGODB_SETTINGS'] = {
-	'db': 'blog',
-	'host': 'mongo',
+	'db': 'xxx',
+	'host': '127.0.0.1',
 	'port': 27017,
 }
 
-app.config['WXAPP_ID'] = 'xxx'
-app.config['WXAPP_SECRET'] = 'xxx'
-app.config['TOKEN_SECRET_KEY'] = 'xxx'
-app.config['TOKEN_SALT'] = 'xxx'
-app.config['TOKEN_TIMEOUT_HOURS'] = 24 * 365
-app.config['WEB_NAME'] = 'myweb'
-app.config['TEMPLATE_ID'] = None
+app.config['WXAPP_ID'] 		= 'xxx'
+app.config['WXAPP_SECRET'] 	= 'xxx'
+app.config['WEB_NAME'] 		= 'myweb'
+app.config['TEMPLATE_ID']	= None
 
 #-------------------------------------------
-# config flask-wechat-utils (db/bp/api)
+# 2 init (db/bp/api)
 #-------------------------------------------
 flask_wechat_utils.init_app(app)
 
 #-------------------------------------------
-# register bp
+# 3 routes
 #-------------------------------------------
-app.register_blueprint(flask_wechat_utils.config.bp)
-
-#-------------------------------------------
-# route
-#-------------------------------------------
-from flask_wechat_utils.user import routes
-from flask_wechat_utils.message_template import routes
-
+from flask_wechat_utils.user import routes				#使用默认user路由
+from flask_wechat_utils.message_template import routes	#使用默认message_template路由
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0',port=5000)
-
 ```
 
 4 运行：run.py。

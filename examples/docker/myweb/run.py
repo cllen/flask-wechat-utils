@@ -21,7 +21,7 @@ app.config['WXAPP_SECRET'] = 'xxx'
 app.config['TOKEN_SECRET_KEY'] = 'xxx'
 app.config['TOKEN_SALT'] = 'xxx'
 app.config['TOKEN_TIMEOUT_HOURS'] = 24 * 365
-app.config['WEB_NAME'] = 'xxx'
+app.config['WEB_NAME'] = 'myweb'
 app.config['TEMPLATE_ID'] = None
 
 #-------------------------------------------
@@ -38,3 +38,8 @@ from message_template import routes						#message_template，是开发者自定�
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0',port=5000)
+
+
+# post http://127.0.0.1:5000/myweb/user
+# get http://127.0.0.1:5000/myweb/user
+# put http://127.0.0.1:5000/myweb/user

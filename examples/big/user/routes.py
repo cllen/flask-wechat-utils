@@ -78,8 +78,8 @@ marshal_user_login = api.model(
 #-------------------------------------------
 # route
 #-------------------------------------------
-@ns.route('/')
-class UserRoute(Resource):
+@ns.route('/user')
+class User(Resource):
 
 	@api.doc(parser=parser_user_login)
 	@api.marshal_with(marshal_user_login)
@@ -99,10 +99,6 @@ class UserRoute(Resource):
 			'user':self.wechat_user,
 		}
 
-
-@ns.route('/test')
-class TestAuth(Resource):
-
 	@api.marshal_with(marshal_user_register)
 	@auth
 	def get(self):
@@ -111,3 +107,4 @@ class TestAuth(Resource):
 			'code':0,
 			'user':self.wechat_user,
 		}
+

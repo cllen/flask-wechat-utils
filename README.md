@@ -1,14 +1,14 @@
 
 flask-wechat-utils
 ===================
-* v0.1.14
+* v0.1.16
 * mongo/python2.7
 * 封装了微信用户登录，注册，验证，消息模板等4个功能:
 - [x] 微信用户登录(code)
-- [x] 微信用户注册(nickname,avatarUrl,...)
-- [x] 微信用户验证的写入(token)
-- [x] 新增：formid存储/读出自动删除/过期自动删除
-- [x] 新增：微信消息模板发送
+- [x] 微信用户注册(iv,encryptedData,...)
+- [x] 微信用户验证(token)
+- [x] 存储formid,过期自动删除
+- [x] 发送模板消息给用户
 
 
 

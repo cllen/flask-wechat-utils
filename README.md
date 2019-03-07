@@ -1,7 +1,7 @@
 
 flask-wechat-utils
 ===================
-* v0.1.11
+* v0.1.14
 * mongo/python2.7
 * 封装了微信用户登录，注册，验证，消息模板等4个功能:
 - [x] 微信用户登录(code)
@@ -47,10 +47,10 @@ app.config['MONGODB_SETTINGS'] = {
 	'port': 27017,
 }
 
-app.config['WXAPP_ID'] 		= 'xxx'
-app.config['WXAPP_SECRET'] 	= 'xxx'
-app.config['WEB_NAME'] 		= 'myweb'
-app.config['TEMPLATE_ID']	= None
+app.config['WXAPP_ID'] 		= 'xxx' #小程序appid
+app.config['WXAPP_SECRET'] 	= 'xxx' #小程序secret
+app.config['WEB_NAME'] 		= 'myweb' #路由的
+app.config['TEMPLATE_ID']	= None #小程序消息模板ID
 
 #-------------------------------------------
 # 2 init (db/bp/api)
@@ -92,7 +92,7 @@ print response.json() #token
 * auth
 ```python
 import requests
-url = 'http:127.0.0.1:5000/myweb/wechat/test'
+url = 'http:127.0.0.1:5000/myweb/wechat/user'
 headers = {
 	'Content-Type':'application/json',
 	'token':'xxx',
@@ -134,25 +134,7 @@ done
 
 ps:目录结构
 -------------------
-* 该项目的目录结构:  
-flask_wechat_utils  
-├── __init__.py  
-├── config.py  
-├── user  
-│   ├── config.py  
-│   ├── exceptions.py  
-│   ├── __init__.py  
-│   ├── models.py  
-│   ├── routes.py  
-│   └── utils.py  
-└── message_template  
-     ├── config.py  
-     ├── exceptions.py  
-     ├── __init__.py  
-     ├── models.py  
-     ├── routes.py  
-     └── utils.py  
-* 用户可以参考该目录结构：  
+
 web  
 ├── __init__.py  
 ├── config.py  

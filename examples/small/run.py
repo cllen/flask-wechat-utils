@@ -36,8 +36,8 @@ flask_wechat_utils.init_app(app)
 from flask_wechat_utils.config import api
 
 ns = api.namespace(
-	'myapplication', 
-	description='descriptions of myapplication'
+	'wechat', 
+	description='descriptions of wechat applicatioin'
 )
 
 @ns.route('/user')
@@ -67,7 +67,8 @@ class User(Resource):
 		}
 
 #-------------------------------------------
-# 3 flask-wechat-utils routes
+# 4 flask-wechat-utils routes
+# 可以将 3 全部删除、直接使用下面两句代码，3 只是作为示例展示内部实现的代码风格
 #-------------------------------------------
 # from flask_wechat_utils.user import routes				#使用默认user路由
 # from flask_wechat_utils.message_template import routes	#使用默认message_template路由
@@ -75,6 +76,8 @@ class User(Resource):
 if __name__ == '__main__':
 	app.run(host='0.0.0.0',port=5000)
 
-# post http://127.0.0.1:5000/myweb/user
-# get http://127.0.0.1:5000/myweb/user
-# put http://127.0.0.1:5000/myweb/user
+# post http://127.0.0.1:5000/myweb/wechat/user
+# get http://127.0.0.1:5000/myweb/wechat/user
+# put http://127.0.0.1:5000/myweb/wechat/user
+
+# http://domain_name/web_name/application_name/function_name

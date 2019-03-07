@@ -40,6 +40,8 @@ if __name__ == '__main__':
 	app.run(host='0.0.0.0',port=5000)
 
 
-# post http://127.0.0.1:5000/myweb/user
-# get http://127.0.0.1:5000/myweb/user
-# put http://127.0.0.1:5000/myweb/user
+# post http://127.0.0.1:5000/myweb/wechat/user
+# get http://127.0.0.1:5000/myweb/wechat/user
+# put http://127.0.0.1:5000/myweb/wechat/user
+
+# http://domain_name/web_name/application_name/function_name

@@ -82,8 +82,8 @@ marshal_user_login = api.model(
 # route
 #-------------------------------------------
 #@api.doc(responses={404: 'some params is not found'}, params={'som_params': 'the params of this api'})
-@ns.route('/')
-class UserRoute(Resource):
+@ns.route('/user')
+class User(Resource):
 
 	@api.doc(parser=parser_user_login)
 	@api.marshal_with(marshal_user_login)
@@ -103,10 +103,6 @@ class UserRoute(Resource):
 			'user':self.wechat_user,
 		}
 
-
-@ns.route('/test')
-class Test(Resource):
-
 	@api.marshal_with(marshal_user_register)
 	@auth
 	def get(self):
@@ -115,3 +111,4 @@ class Test(Resource):
 			'code':0,
 			'user':self.wechat_user,
 		}
+

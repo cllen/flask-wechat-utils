@@ -9,7 +9,7 @@ long_description = 'https://github.com/suckmybigdick/flask-wechat-utils'
 
 setuptools.setup(
 	name = "flask-wechat-utils",
-	version="0.1.14",
+	version="0.1.16",
 	auth="Huang Xu Hui",
 	author_email="13250270761@163.com",
 	description="flask-wechat-tuils for wechat-app-user's login/register/auth, and message_template",

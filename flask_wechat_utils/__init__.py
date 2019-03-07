@@ -1,5 +1,7 @@
 #coding:utf8
 
+__version__ = '0.1.16'
+
 #frame
 from flask import Blueprint
 from flask_restplus import Api

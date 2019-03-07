@@ -72,13 +72,14 @@ if __name__ == '__main__':
 ```bash
 python run.py
 ```
+* 查看接口文档：http://127.0.0.1:5000/myweb
 
 5 使用：微信小程序分别带上code、iv、encryptedData、token访问下面api完成用户信息的登录、验证、注册。这里提供的是python模拟微信小程序访问。
 -------------------
 * login
 ```python
 import requests
-url = 'http:127.0.0.1:5000/myweb/wechat/user'
+url = 'http:127.0.0.1:5000/myweb/user'
 headers = {
 	'Content-Type':'application/json',
 }
@@ -92,7 +93,7 @@ print response.json() #token
 * auth
 ```python
 import requests
-url = 'http:127.0.0.1:5000/myweb/wechat/user'
+url = 'http:127.0.0.1:5000/myweb/user'
 headers = {
 	'Content-Type':'application/json',
 	'token':'xxx',
@@ -104,7 +105,7 @@ print response.json()
 * register
 ```python
 import requests
-url = 'http:127.0.0.1:5000/myweb/wechat/user'
+url = 'http:127.0.0.1:5000/myweb/user'
 headers = {
 	'Content-Type':'application/json',
 	'token':'xxx',

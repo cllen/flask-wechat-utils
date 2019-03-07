@@ -82,7 +82,7 @@ marshal_user_login = api.model(
 # route
 #-------------------------------------------
 #@api.doc(responses={404: 'some params is not found'}, params={'som_params': 'the params of this api'})
-@ns.route('/user')
+@ns.route('/')
 class User(Resource):
 
 	@api.doc(parser=parser_user_login)

@@ -111,6 +111,17 @@ headers = {
 	'token':'xxx',
 }
 data = {
+
+	#使用这些字段
+	'nickname':'xxx',
+	'avatar':'xxx',
+	'gender':'xxx',
+	'city':'xxx',
+	'province':'xxx',
+	'country':'xxx',
+	'language':'xxx',
+
+	#或使用这两个字段
 	'encryptedData':'xxx',
 	'iv':'xxx',
 }

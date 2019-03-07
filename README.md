@@ -111,13 +111,6 @@ headers = {
 	'token':'xxx',
 }
 data = {
-	'nickname':'xxx',
-	'avatar':'xxx',
-	'gender':'xxx',
-	'city':'xxx',
-	'province':'xxx',
-	'country':'xxx',
-	'language':'xxx',
 	'encryptedData':'xxx',
 	'iv':'xxx',
 }

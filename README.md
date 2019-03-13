@@ -9,6 +9,7 @@ flask-wechat-utils
 - [x] 微信用户验证(token)
 - [x] 存储formid,过期自动删除
 - [x] 发送模板消息给用户
+* django框架下也有同样功能的第三方库: django-wechat-utils
 
 
 

@@ -24,7 +24,7 @@ setuptools.setup(
 	],
 	install_requires=[
 		"Flask==0.10.1",
-		"requests==2.9.1",
+		"requests==2.20.0",
 		"cryptography",
 		"itsdangerous==0.24",
 		"Werkzeug==0.14.1",

@@ -23,7 +23,7 @@ setuptools.setup(
 		"Operating System :: OS Independent",
 	],
 	install_requires=[
-		"Flask==0.10.1",
+		"Flask==1.0",
 		"requests==2.9.1",
 		"cryptography",
 		"itsdangerous==0.24",

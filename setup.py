@@ -27,7 +27,7 @@ setuptools.setup(
 		"requests==2.9.1",
 		"cryptography",
 		"itsdangerous==0.24",
-		"Werkzeug==0.14.1",
+		"Werkzeug==0.15.3",
 		"flask_restplus==0.12.1",
 		"flask_mongoengine==0.9.5",
 	],
